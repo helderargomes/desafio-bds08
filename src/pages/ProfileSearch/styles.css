@@ -1,6 +1,5 @@
 .profile-search-container {
-  padding: 55px 90px;
-  font-size: 38px;
+  padding: 55px 90px 73px 99px;
 }
 
 .search-box {
@@ -14,7 +13,7 @@
 }
 
 .search-box h1 {
-    margin-bottom: 0px;
+    margin-bottom: 12px;
 }
 
 .form-container {

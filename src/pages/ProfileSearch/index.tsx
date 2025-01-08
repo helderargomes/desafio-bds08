@@ -1,3 +1,4 @@
+import ResultCard from 'components/ResultCard';
 import './styles.css';
 
 const ProfileSearch = () => {
@@ -18,6 +19,7 @@ const ProfileSearch = () => {
           Encontrar
         </button>
       </div>
+      <ResultCard />
     </div>
   );
 };

@@ -13,6 +13,7 @@
 
 .start-button {
     color: #fff;
-    font-size: 0.3em;
+    font-size: 16px;
+    line-height: 24px;
     padding: 8px 18px;
 }
