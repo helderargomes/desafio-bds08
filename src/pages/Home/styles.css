@@ -1,7 +1,18 @@
 .home-container {
-    padding: 40px;
+    padding: 27px 40px;
+    font-size: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.home-title-container h2 {
+    font-size: 0.5em;
+    color: #7e7e7e;
 }
 
 .start-button {
     color: #fff;
+    font-size: 0.3em;
+    padding: 8px 18px;
 }
