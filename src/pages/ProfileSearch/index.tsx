@@ -2,7 +2,8 @@ import ResultCard from 'components/ResultCard';
 import './styles.css';
 import { useState } from 'react';
 import axios from 'axios';
-import { error } from 'console';
+import ImgLoader from './ImgLoader';
+import InfoLoader from './InfoLoader';
 
 type FormData = {
   user: string;
@@ -17,6 +18,8 @@ type UserInfo = {
 };
 
 const ProfileSearch = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const [userInfo, setUserInfo] = useState<UserInfo>();
 
   const [formData, setFormData] = useState<FormData>({
@@ -32,6 +35,7 @@ const ProfileSearch = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setIsLoading(true);
     axios
       .get(`https://api.github.com/users/${formData.user}`)
       .then((response) => {
@@ -39,8 +43,8 @@ const ProfileSearch = () => {
       })
       .catch((error) => {
         setUserInfo(undefined);
-        console.log(error);
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   return (
@@ -63,16 +67,27 @@ const ProfileSearch = () => {
           </div>
         </form>
       </div>
-      {userInfo && (
-        <>
-          <ResultCard
-            img_src={userInfo.avatar_url}
-            profile={userInfo.url}
-            followers={userInfo.followers}
-            location={userInfo.location}
-            name={userInfo.name}
-          />
-        </>
+      {isLoading ? (
+        <div className="loader-container">
+          <div className="img-loader-container">
+            <ImgLoader />
+          </div>
+          <div className="info-loader-container">
+            <InfoLoader />
+          </div>
+        </div>
+      ) : (
+        userInfo && (
+          <>
+            <ResultCard
+              img_src={userInfo.avatar_url}
+              profile={userInfo.url}
+              followers={userInfo.followers}
+              location={userInfo.location}
+              name={userInfo.name}
+            />
+          </>
+        )
       )}
     </div>
   );
