@@ -1,29 +1,38 @@
 import './styles.css';
 
-const ResultCard = () => {
+type Props = {
+  img_src: string;
+  profile: string;
+  followers: string;
+  location: string;
+  name: string;
+}
+
+
+const ResultCard = ( {img_src, profile, followers, location, name} : Props) => {
   return (
     <div className="result-container">
       <div className="img-container">
-        <img src="https://avatars.githubusercontent.com/u/13897257?v=4" alt="user_avatar" />
+        <img src={img_src} alt="user_avatar" />
       </div>
       <div className="info-container">
         <h2 className="info-title-container">Informações</h2>
 
         <div className="info-data-container">
           <h3>Perfil:&nbsp;</h3>
-          <a href='/'>https://api.github.com/users/acenelio</a>
+          <span><a href={profile} className='link-primary link-underline'>{profile}</a></span>
         </div>
         <div className="info-data-container">
           <h3>Seguidores:&nbsp;</h3>
-          <span>4379</span>
+          <span>{followers}</span>
         </div>
         <div className="info-data-container">
           <h3>Localidade:&nbsp;</h3>
-          <span>Uberlândia</span>
+          <span>{location}</span>
         </div>
         <div className="info-data-container">
           <h3>Nome:&nbsp;</h3>
-          <span>Nelio Alves</span>
+          <span>{name}</span>
         </div>
       </div>
     </div>
